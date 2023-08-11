@@ -1,0 +1,29 @@
+﻿@using MvcEticaret.ViewComponents;
+
+@{
+    ViewData["Title"] = "Shop Homepage";
+}
+
+<!-- Header-->
+<header class="py-5 bg-dark" style="margin-left: -12px; margin-right: -12px;">
+    <div class="container-fluid px-4 px-lg-5 my-5" style="padding-left: 0; padding-right: 0;">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop homepage template</p>
+        </div>
+    </div>
+</header>
+
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var product in Model)
+            {
+                   @await Component.InvokeAsync(typeof(ProductItemViewComponent), 
+                    new { product.Title, product.StartCount, product.OldPrice, product.Price, product.ImageUrl, product.IsSale })
+            }
+        </div>
+    </div>
+</section>
+
